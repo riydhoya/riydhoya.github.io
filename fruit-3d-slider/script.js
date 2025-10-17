@@ -71,11 +71,11 @@ prevBtn.addEventListener('click', () => {
 
     // Setelah animasi selesai, reset posisi info item
     setTimeout(() => {
-        infoSlider.style.transition = 'none'; // Nonaktifkan transisi sementara
+        infoSlider.style.transition = 'none';
         infoSlider.style.transform = 'translateY(0)';
-        infoSlider.prepend(infoSlider.lastElementChild); // Pindahkan item info ke belakang
+        infoSlider.appendChild(infoSlider.lastElementChild); // GANTI prepend() jadi append()
         setTimeout(() => {
-            infoSlider.style.transition = 'transform 0.5s ease-in-out'; // Menghidupkan transisi kembali
-        }, 20); // Jeda kecil untuk transisi yang mulus
-    }, 500); // Waktu yang cukup untuk menyelesaikan transisi
+            infoSlider.style.transition = 'transform 0.5s ease-in-out';
+        }, 20);
+    }, 500);
 });
