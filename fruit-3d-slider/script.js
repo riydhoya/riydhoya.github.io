@@ -28,7 +28,7 @@ nextBtn.addEventListener('click', () => {
     index = (index + 1) % imgFruits.length;
     updateSlider();
 
-    // animasi info box
+    // animasi info box (naik ke atas)
     infoSlider.style.transition = 'transform 0.5s ease-in-out';
     infoSlider.style.transform = 'translateY(-25%)';
 
@@ -48,14 +48,14 @@ prevBtn.addEventListener('click', () => {
     if (index < 0) index = imgFruits.length - 1;
     updateSlider();
 
-    // animasi info box
+    // animasi info box (turun ke bawah)
     infoSlider.style.transition = 'transform 0.5s ease-in-out';
-    infoSlider.style.transform = 'translateY(25%)'; // kebalikan arah
+    infoSlider.style.transform = 'translateY(25%)'; // arah kebalikan
 
     setTimeout(() => {
         infoSlider.style.transition = 'none';
+        infoSlider.prepend(infoSlider.lastElementChild); // pindahkan elemen terakhir ke atas
         infoSlider.style.transform = 'translateY(0)';
-        infoSlider.prepend(infoSlider.lastElementChild); // pindahkan item terakhir ke depan
         setTimeout(() => {
             infoSlider.style.transition = 'transform 0.5s ease-in-out';
         }, 20);
