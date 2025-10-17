@@ -60,7 +60,7 @@ prevBtn.addEventListener('click', () => {
     updateSlider();
 
     // Menangani perubahan infoSlider secara lebih halus
-    if (direction === -1) {
+    if (direction === 0) {
         infoSlider.appendChild(infoSlider.firstElementChild);
     }
     direction = 1;
@@ -79,3 +79,4 @@ prevBtn.addEventListener('click', () => {
         }, 20); // Jeda kecil untuk transisi yang mulus
     }, 500); // Waktu yang cukup untuk menyelesaikan transisi
 });
+
