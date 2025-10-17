@@ -54,28 +54,28 @@ nextBtn.addEventListener('click', () => {
 prevBtn.addEventListener('click', () => {
     indexSlider--;
     index--;
-    if (index < 0) {
-        index = imgFruits.length - 1;
+    if (index >= imgFruits.length) {
+        index = 0;
     }
     updateSlider();
 
     // Menangani perubahan infoSlider secara lebih halus
     if (direction === -1) {
-        infoSlider.prepend(infoSlider.lastElementChild);
+        infoSlider.appendChild(infoSlider.firstElementChild);
     }
     direction = 1;
 
     // Transisi info item dengan lebih halus
     infoSlider.style.transition = 'transform 0.5s ease-in-out';
-    infoSlider.style.transform = 'translateY(25%)';
+    infoSlider.style.transform = 'translateY(-25%)';
 
     // Setelah animasi selesai, reset posisi info item
     setTimeout(() => {
-        infoSlider.style.transition = 'none';
+        infoSlider.style.transition = 'none'; // Nonaktifkan transisi sementara
         infoSlider.style.transform = 'translateY(0)';
-        infoSlider.appendChild(infoSlider.lastElementChild); // GANTI prepend() jadi append()
+        infoSlider.appendChild(infoSlider.firstElementChild); // Pindahkan item info ke depan
         setTimeout(() => {
-            infoSlider.style.transition = 'transform 0.5s ease-in-out';
-        }, 20);
-    }, 500);
+            infoSlider.style.transition = 'transform 0.5s ease-in-out'; // Menghidupkan transisi kembali
+        }, 20); // Jeda kecil untuk transisi yang mulus
+    }, 500); // Waktu yang cukup untuk menyelesaikan transisi
 });
